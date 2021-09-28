@@ -1,0 +1,576 @@
+/* Foundation */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+/* Base */
+
+html {
+    font-size: 18px;
+
+}
+@media(min-width:600px) {
+    html{
+        font-size: 18px;
+    }
+}   
+body {
+    font-size: 1rem; 
+    line-height: 1.5;
+    font-family: sans-serif;
+    background-color:lightgray;
+    gap: 1rem;
+
+}
+
+h1 {    font-family:  sans-serif;
+        margin: 1,5rem; 
+        font-size: 3rem;
+        line-height: 1;
+    }
+    h2 {
+        font-size: 2rem;
+        font-family: sans-serif;
+    }
+h3 {
+    font-family: sans-serif;
+    line-height: 1;
+    font-size: 1,5rem;
+}
+
+h1+p, 
+h2+p,
+h3,p {
+    margin-top:1rem 0;
+
+}
+p {
+    margin: 1rem 0;
+}
+
+img {
+    display: block;
+    /*width: 100%;        /* fyller ut bilden till 100% av ytan oavsett storlek */
+    max-width: 100%;    /* fyller ut bilder till 100% av ytan om bildens storlek tillåter */
+    height: auto;
+}
+
+ul{
+    list-style:none
+}
+
+a{
+    color:white;
+    text-decoration: none;
+}
+/*Modules*/
+/*** UTILITY (hjälp-klasser) ***/
+.container {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.flex-container {
+    display: flex;
+    flex-direction: column;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.p-0 {
+    padding: 1;
+}
+.p-1 {
+    padding: 1em;
+}
+.py-1 {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+.px-1 {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+@media ( min-width: 600px ) {
+    .container {
+        max-width: 800px;
+    }
+    .flex-container {
+        flex-direction: row;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+}
+/**SITE HEADER**/
+.site-header {
+    position: sticky;
+    top:0;
+    display: grid;
+    grid-template-columns: 1fr 2rem;
+    grid-template-rows: 1fr auto;
+    grid-template-areas: 
+       "L B"
+       "M M"
+    ;
+    align-items:center;
+    padding: 1rem;
+    background-color: #eee;
+}
+ /** BRAND**/
+ .brand{
+     grid-area: L;
+ }
+.bran-link {
+    color: #000000;
+    text-decoration: none;
+    font-size: 2rem;
+}
+/**SITE NAVIGATION **/
+.site-navigation{
+    grid-area: M;
+    display: none;
+}
+/** Toggle Button**/ 
+.toggle-btn {
+    grid-area: B;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 3rem;
+    padding: 0.5em;
+    background-color:darkcyan;
+    cursor: pointer;
+
+}
+
+.toggle-btn .bars,
+.toggle-btn .bars::before,
+.toggle-btn .bars::after {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color:darkmagenta;
+}
+.toggle-btn .bars::before,
+.toggle-btn .bars::after {
+    content: '';
+}
+
+.toggle-btn .bars::before {
+    position: relative;
+    top: -10px;
+}
+
+.toggle-btn .bars::after {
+    position: relative;
+    top: 8px;
+}
+/*cHECKBOX*/
+.toggle-menu {
+    display: none;
+} 
+.toggle-menu:checked + .site-navigation {
+    display: block;
+}
+
+/** Menu **/
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+.menu-item {
+    /* flex-basis: 100%; */
+}
+.menu-item a {
+    display: block;
+    text-decoration: none;
+    padding: .5rem 1.5rem;
+    color: white;
+    background-color:grey;
+    margin: .5rem;
+}
+.menu-item.active a {
+    background-color:darkslategrey;
+}
+.menu-item a:hover {
+    color:grey;
+    background-color: white;
+}
+
+/** FEATURES **/
+
+
+
+/** COSMETIC - Här gör vi unik styling på komponenter **/ 
+
+
+/*** SITE LAYOUT ***/
+.site {
+    overflow: hidden; /*tillåter inte objekt att flöda utanför vyn*/
+}
+.site-header {
+    position:sticky;
+    top:0;
+    display: flex;
+    flex-direction: column;
+    /* padding: 2rem 1rem; */
+    background-color:lightslategrey;
+    text-decoration: none;
+}
+
+@media ( min-width: 600px ) {
+    .site-header {
+        flex-direction: row;
+        justify-content: space-between;
+        position: sticky;
+        top:0;
+    
+    }
+    .site-header > * { /* alla nivåer av barnelement*/
+        flex-basis: 100%;
+        position:sticky;
+        top:0;
+    
+
+    }
+    .side-header {/*alla nivåer av barnelemnt*/
+        /*margin: 2 rem ; */
+    }
+}
+
+.brand{
+    font-family: sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 100;
+    width: 200px;
+    /* display: inline-block; */
+    /* padding: .5rem 1rem; */
+    /*border: .25rem solid #ffffff; /* 20px / 0.25 = 5px */
+    /*border-radius: .5rem; /* 20px / 0.5 = 10px */
+
+}
+@media (min-width:600px) {} /* denna query gör ändrignar på enheter med skärmbredd över 600px */
+    
+    .brand a {
+     color:#ffffff;
+     text-decoration: none;
+     /* 20px / 0.25 = 5px */
+     border-radius: .5rem; /* 20px / 0.5 = 10px */
+ }
+ @media (min-width:1200px) {} /* denna query gör ändrignar på enheter med skärmbredd över 600px */
+@media (max-width:600px) {} /* denna query gör ändrignar på enheter med skärmbredd upp till 600px */
+
+
+.site-navigation {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    text-decoration: none;
+
+}
+
+.site-main {
+    padding: 1rem;
+    background-color:silver;
+    
+}
+/*FOTTER*/
+.site-footer {
+    /* padding: 2rem 1rem; */
+    background-color:lightslategrey;
+    padding: 1rem;
+}
+
+.site-header{
+    padding: 1rem;
+    text-decoration: none;
+    position: sticky;
+    margin: 0;
+
+}
+
+.site-main section{
+    padding:1rem
+}
+.site-footer {
+    padding: 2rem 1rem;
+}
+@media (min-width:600px) {
+    .site-header{
+        position: sticky;
+        top:0;
+        z-index: 9000;
+        position: sticky;
+        margin: 0;
+    }
+
+    .site-main section,
+    .site-footer {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+}
+/*** HERO***/
+.hero{
+    position :relative;
+    
+    height: 90vh;
+    padding: 2%;
+    background-image: url(../images/vas\ transparent.jpg) ;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.hero.front-page{
+
+    background-image: url(../images/bild\ vardagsrum.jpg);
+    margin: 2rem;
+    
+}
+.hero.contact{
+    background-image: url(../images/Ängholmen\ från\ Storefactory.jpg)
+}
+.hero .overlay{
+    position: absolute;
+    top: 0em;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0,5);
+}
+.hero.contact.overlay{
+    background-color:pink;
+}
+
+.hero .conainer{
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    max-width: 800px;
+
+    color: white
+}
+.hero-title{
+    margin:50%;
+    padding:1rem 2rem;
+    
+}
+.hero-byline{}
+.hero-cta{
+    background-color: white;
+    color:black;
+    padding: 1rem 2rem;
+    text-decoration: none;
+
+}
+
+/*** POST LAYOUT ***/
+.post {
+    padding: 4em;
+}
+
+@media (min-width:600px) {
+    .post {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .post img {
+        width: 40%;
+        float:right;
+    }
+}
+.columns {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.col {
+    /* flex-basis: 100%; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1em;
+}
+@media (min-width: 500px) {
+    .columns {
+        flex-direction: row;
+    }
+    .col {
+        width: 100%;
+        
+    }
+}
+
+@media (min-width: 700px) {
+    .col {
+        width: 25%;
+    
+    }
+}
+
+.col:nth-of-type(1) {
+    background-color:snow;
+    /* order: 2; */
+}
+.col:nth-of-type(2) {
+    background-color:grey;
+    /* order: -1 */
+}
+.col:nth-of-type(3) {
+    background-color:bisque
+    /* order: 1; */
+}
+.col:nth-of-type(4) {
+
+    background-color: rgba(4, 49, 4, 0.3);
+}
+    /* order: -1 */
+.col:nth-of-type(5) {
+    background-color:rgba(4, 49, 4, 0.3);
+   
+}
+.col:nth-of-type(6) {
+    background-color: snow;
+}
+.col:nth-of-type(7) {
+    background-color: gray;
+}
+.col:nth-of-type(8) {
+    background-color: bisque;
+}
+
+.col img {
+    order: -1;
+    /* dra bilden 1rem utanför padding i boxen */ 
+    margin: -1rem -1rem 0 -1rem;
+    /* justera bildens maxbredd med summan av padding */
+    max-width: calc( 100% + 2rem );
+}
+
+@media (min-width: 600px) {
+    .columns {
+        flex-direction: row;
+        
+        /* gap: 1rem; */
+    }
+      
+    /* .col + .col {
+        margin-left: 1rem;
+    } */
+}
+/***OM OSS ( GRID)***/
+
+.site-main{
+     min-height: 90vh;
+     
+}
+@media (min-width: 600px){}
+
+.contact .grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 3rem;
+}
+.product-grid{
+    display:grid;
+    grid-template-columns: repeat(1fr);
+    grid-auto-flow: dense;
+    gap: 3em;
+    max-width: 1200px;
+    margin: auto;
+    padding: 3em 1em;
+
+}
+@media(min-width:768px){
+    .product-grid{
+        grid-template-columns:repeat(3,1fr) ;
+    
+    }
+}
+@media (min-width:992px){
+    .product-grid{
+        grid-template-columns: (3,1fr);
+    }
+}
+.product-grid .product{
+    background-color:#eee
+}
+.product:nth-of-type(1)
+.product:nth-of-type(4n) {
+    grid-column: span2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+.product:nth-of-type(1)*,
+.product:nth-of-type(2n)*{
+    grid-column: 2;
+}
+.product:nth-of-type(1)img,
+.product:nth-of-type(4n)img{
+    grid-column:1;
+    object-fit: cover;
+    object-position:right;
+    height: 100%
+}
+.product-grid .product-image{
+    text-align: center;
+}
+.product-grid .product-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+}
+.product-grid .product-title{
+    text-align: center;
+}
+.product-grid .product-description{
+    text-align: center;
+    
+}
+.product-grid .product-link{
+    display: inline-block;
+    padding: 5em 1.5;
+    text-decoration: none;
+    background-color:darkcyan;
+    font-weight: 500;
+    color: #fff;
+    justify-content: center;
+    text-align: center;
+
+    @media(max-width: 768px;){
+        flex-direction:column;
+        flex-direction:space-between;
+        grid-auto-columns: 1fr;
+        grid-auto-rows: 1fr;
+        padding: 1rem;
+        text-align: center;
+}
+    
+    
+}
+
+
+/* Cosmetic */

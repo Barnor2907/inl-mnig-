@@ -1,0 +1,51 @@
+/*** TABLET CSS ***/
+html {
+    font-size: 18px;
+}
+
+/** FEATURES **/
+
+.flex-container {
+    display: flex;
+}
+.card {
+    flex-basis: 100%;
+}
+.card + .card {
+    margin-left: 1em;
+}
+.contact-info .container {
+    grid-template-columns: 1fr 1fr;
+    gap: 2em
+}
+
+/** SITE FOOTER **/
+/** kolumner med grid **/
+.site-footer .grid-container {
+    grid-template-columns: 1fr 1fr;
+}
+
+
+/** kolumner med flex **/
+.site-footer .flex-container {
+    display: flex;
+    flex-direction: row;
+}
+.site-footer .flex-container > div {
+    width: 33%;
+    /* flex-basis: 100%; */
+}
+.site-footer .flex-container > div + div { 
+    margin-top: 0;
+    margin-left: 1em;
+}
+
+.socials {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.social-links {
+    flex-direction: column;
+}

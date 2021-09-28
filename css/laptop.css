@@ -1,0 +1,45 @@
+html {
+    font-size: 20px;
+}
+
+/** SITE HEADER **/
+.site-header {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        " L M ";
+}
+.site-navigation {
+    display: block;
+    justify-self: end;
+
+}
+.menu {
+    flex-direction: row;
+}
+.toggle-btn {
+    display: none;
+}
+.cart {
+    position: relative;
+    /* margin: .5em; */
+    margin-left: 2rem;
+    padding: .5rem 1.5rem;
+}
+.cart:hover > div,
+.cart:focus-within > div {
+    display: block;
+}
+.cart > div {
+    display: none;
+    position: absolute;
+    right: 0;
+    min-width: 250px;
+    padding: 1em;
+    background-color: #fff;
+    border: 1px solid #333;
+}
+.cart > div ul {
+    margin-bottom: 1em;
+}
